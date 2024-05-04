@@ -69,7 +69,10 @@ int main() {
      * 	different funcs will be executed
      */
     
+    
+    
     /*
      * 5. It prints the output of the program
      */
+     print_middle_time(double middTime);
 }

@@ -15,3 +15,7 @@ int convert_string_to_int(const string& s);
 // Pre: true
 // Post: returns a Binary Tree with a defined and organized number of tasks
 BT initialize_tasks();
+
+// Pre: m is not empty
+// Post: It prints at the terminal the middle time in a readable format
+void print_middle_time(double m);
