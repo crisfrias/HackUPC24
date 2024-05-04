@@ -32,7 +32,7 @@ int main() {
     vector<vector<int>> times;
     string s;
     int index = 0;
-    while (std::getline(inputFile, s)) {
+    while (getline(inputFile, s)) {
 		if (s[0] == '#') {
 			// Updating the lines container
 			vector<string> aux1(1);
@@ -61,4 +61,15 @@ int main() {
     show_actual_options();
     int n;
     cin >> n;
+    
+    /*
+     * 4. Questions adapted to the list of task that the user had chosen
+     * 
+     * 	This consists in questions of yes/no that depending on the answer, 
+     * 	different funcs will be executed
+     */
+    
+    /*
+     * 5. It prints the output of the program
+     */
 }
