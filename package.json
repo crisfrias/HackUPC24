@@ -1,0 +1,19 @@
+{
+  "name": "hackupc24",
+  "version": "1.0.0",
+  "description": "Some random stuff for a hackathon",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crisfrias/HackUPC24.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crisfrias/HackUPC24/issues"
+  },
+  "homepage": "https://github.com/crisfrias/HackUPC24#readme"
+}
