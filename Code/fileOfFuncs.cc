@@ -10,7 +10,7 @@ BT initialize_tasks() {
 	BT toDo_list = BT(make_pair("LEAF", 600));
 	BT go_shopping = BT(make_pair("LEAF", 4200));
 	BT do_sports = BT(make_pair("LEAF", 5400));
-	BT take_care_plants = BT(make_pair("LEAF", 300), hang_laundry, BT());
+	BT take_care_plants = BT(make_pair("SEMILEAF", 300), hang_laundry, BT());
 	BT make_bed = BT(make_pair("LEAF", 180));
 	BT change_sheets = BT(make_pair("LEAF", 1200));
 	BT have_breakfast = BT(make_pair("LEAF", 600));
@@ -18,7 +18,7 @@ BT initialize_tasks() {
 	BT go_someplace = BT(make_pair("LEAF", 1200));
 	BT planning_future = BT(make_pair("LEAF", 600));
 	BT paint = BT(make_pair("LEAF", 4200));
-	BT write = BT(make_pair("LEAF", 2700), toDo_list, BT());
+	BT write = BT(make_pair("SEMILEAF", 2700), toDo_list, BT());
 	BT go_school = BT(make_pair("LEAF", 1200));
 	BT go_walking = BT(make_pair("This task is something you have in routine?", 2400), do_sports, go_shopping);
 	BT take_shower = BT(make_pair("LEAF", 480));
@@ -26,7 +26,7 @@ BT initialize_tasks() {
 	BT answer_emails = BT(make_pair("LEAF", 900));
 	BT meeting = BT(make_pair("LEAF", 1800));
 	BT daily_clean = BT(make_pair("Do you do this task inside your house?", 1200), make_bed, take_care_plants);
-	BT deep_clean = BT(make_pair("LEAF", 14488), change_sheets, BT());
+	BT deep_clean = BT(make_pair("SEMILEAF", 14488), change_sheets, BT());
 	BT take_snack = BT(make_pair("LEAF", 1200));
 	BT eat = BT(make_pair("This task involves eating?", 120), have_breakfast, read_news);
 	BT play_with_friends = BT(make_pair("It's a task that are you going to be proud in the future?", 240), planning_future, go_someplace);
@@ -39,7 +39,7 @@ BT initialize_tasks() {
 	BT cook = BT(make_pair("It's a necessity for living?", 0), eat, take_snack);
 	BT sstatic = BT(make_pair("Is a formal task?", 0), admin_papers, play_with_friends);
 	BT dynamic = BT(make_pair("Is a physical movement?", 1200), go_somewhere, homework);
-	BT non_house_staff = BT(make_pair("Are only you involved or maybe can be another person?", 0), get_ready, do_a_call);
+	BT non_house_staff = BT(make_pair("Are only you the only person involved?", 0), get_ready, do_a_call);
 	BT house_stuff = BT(make_pair("The task has something related with food?", 1500), cook, clean);
 	BT out_of_the_house = BT(make_pair("Is a task that changes constanty or something that involves movement?", 0), dynamic, sstatic);
 	BT in_the_house = BT(make_pair("The task is related with taking care of the house?", 0), house_stuff, non_house_staff);
@@ -49,31 +49,77 @@ BT initialize_tasks() {
 }
 
 int ask_questions(BT t){
-	// BASE CASE
-	if (t.empty()) return -1; 
-	
-	// GENERAL CASE
-	// if it's a leaf, returns its time value
 	int time;
-	if(t.value().first == "LEAF" and t.left().empty()) {
+	// BASE CASE
+	if (t.value().first == "LEAF") {
 		time = t.value().second;
 	}
-	else if (t.value().first == "LEAF" and not t.left().empty()) {
-		time = ask_questions(t.left());
+	else if (t.value().first == "SEMILEAF") {
+		time = t.left().value().second;
 	}
 	else {
+		// GENERAL CASE
 		cout << t.value().first << "(y/n) ";
 		char answer;
 		cin >> answer;
-		if (answer == 'y') {
-			ask_questions(t.left());
+		if (answer == 'y' and not t.left().empty()) {
+			time = ask_questions(t.left());
 		}
-		else if (answer == 'n') {
-			ask_questions(t.right());
-		}
-		else {
-			cout << "Error, try again" << endl;
+		else if (answer == 'n' and not t.right().empty()) {
+			time = ask_questions(t.right());
 		}
 	}
 	return time;
+}
+
+void modify_middle_time(int& time) {
+	char s;
+	// First question
+	cout << "    # Have you done this type of task before?(y/n) ";
+	cin >> s;
+	if (s == 'y' and time > 60) time = time - time/4;
+	else if (s == 'n')time += 60;
+	cout << endl;
+	// Second question
+	cout << "   ## Are you specialized in this tasks?(y/n) ";
+	cin >> s;
+	if (s == 'y' and time > 60) time = time - 60;
+	else if (s == 'n') time += 120;
+	cout << endl;
+	// Third question
+	cout << "  ### Do you want to do it slowly?(y/n) ";
+	cin >> s;
+	if (s == 'y') time = time + 300;
+	cout << endl;
+	// Forth question
+	cout << " #### Are you motivated to do this task?(y/n) ";
+	cin >> s;
+	if (s == 'y' and time > 60) time = time - 120;
+	else if (s == 'n') time = time + 250;
+	cout << endl;
+	// Fift question
+	cout << "##### Is this task difficult for you?(y/n) ";
+	cin >> s;
+	if (s == 'y') time = time + time/3;
+	else if (s == 'n') time = time - 150;
+	cout << endl;
+}
+
+void print_time_correctly(int sec) {
+	if (sec < 60) return;
+	int min;
+	if (sec >= 60 and sec < 3600) {
+		min = sec/60;
+		sec = sec%60;
+		cout << "It will take you " << min << " minutes and " << sec << " seconds for you to do your task" << endl;
+	}
+	else {
+		int hour = sec/3600;
+		int sec = sec%3600;
+		if (sec >= 60) {
+			min = sec/60;
+			sec = sec%60;
+		}
+		cout << "It will take you " << hour << "hours, " << min << " minutes and " << sec << " seconds for you to do your task" << endl;
+	}
 }

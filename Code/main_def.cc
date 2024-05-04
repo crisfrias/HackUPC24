@@ -21,17 +21,20 @@ int main() {
 	  * into questions
 	  * 
 	  */
+	 cout << "Now you have to answer the next yes/no questions:" << endl << endl;
 	 int middle_time = ask_questions(tasks);
+	 cout << endl;
 	 
 	 /*
 	  * 3. Now that we know the base time, we're going to do it more exactly
 	  * 
 	  */
-	  //modify_time(middle_time);
+	 cout << "These are the lasts questions left, be sincere ;)" << endl << endl;
+	 modify_middle_time(middle_time);
 	  
 	  /*
 	   * 4. Print the result and finish the program
 	   */
-	   cout << middle_time << endl;
-	   return 0;
+	 print_time_correctly(middle_time);
+	 return 0;
 }
