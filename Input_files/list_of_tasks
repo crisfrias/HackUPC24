@@ -1,0 +1,49 @@
+// Daily stuff (no more than an hour per deffect)
+"Take a shower", 15, m
+"Have breakfast", 25, m
+"Do exercice", 1, h
+"Cook", 45, m
+"Read", 30, m
+"Go for a walk", 40, m
+"Take a snack", 10, m
+"Meditate", 30, m
+"Reading the news", 10, m 
+"Write in a diary", 15, m
+
+// House-keeping	(tasks of the house)
+"Make the bed", 3, m
+"Change the sheets", 20, m
+"Daily clean", 20, m
+"Deep clean", 3, h
+"Tidy up", 20, m
+"Taking care of plants", 20, m
+
+// Depends on distance	(time to do the task + getting to the place to do it)
+"Go to work"
+"Go to school"
+"Doing administrative papers"
+"Getting ready"
+"Going somewhere"
+
+// Depends on demand (it would have a minimum and a maximum time)
+"Answer e-mails", 30, m
+"Meeting", 1, h
+"Buy", 1, h
+"Watch a film", 1.5, h
+"Playing videogames", 1, h 
+"Play an instrument", 1.5, h
+
+// Depends on the others (These are things that you don't controll in totallity)
+"Eat"
+"Calling someone"
+"Planning future activities"
+"Have visitors"
+
+// Depends on the dificulty (the time can be very diferent)
+"Solve a puzzle", 1, h
+"Study"
+"Project"
+"Paint"
+"Doing a to-do list", 20, m
+"Repairing the car"
+
