@@ -1,8 +1,28 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "fileOfFuncs.hh"
 using namespace std;
+
+// Pre: line is not empty and has exactly 2 different types of information
+// Post: A vector which elements are the first part (string one) of line
+vector<string> split(const string& line) {
+	vector<string> tokens;
+	string token;
+	
+	istringstream tokenStream(line);	
+	while(tokenStream >> token) {		
+		tokens.push_back(token);		
+	}
+	return tokens;				
+}
+
+// Pre: s is not empty
+// Post: returns s converted to an int
+int convert_string_to_int(const string& s) {
+	int result;
+	istringstream(s) >> result;
+	return result;
+}
 
 
 int main() {
