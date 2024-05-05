@@ -1,5 +1,5 @@
 # HackUPC24
-This is our project of HackUPC24, a program called **Time Test**
+This is my project of HackUPC24, a program called **Time Test**
 You"ll find all de code and the program at folder _./Code_
 
 This program calculates how long does it take to you to complete a task that you choose. The program is prepared for giving
