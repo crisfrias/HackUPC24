@@ -7,6 +7,37 @@ using namespace std;
 typedef BinTree<pair<string,int> > BT; 
 
 int main() {
+	 // ASCII Art
+    cout << R"(
+
+
+ /$$$$$$$$ /$$                        
+|__  $$__/|__/                        
+   | $$    /$$ /$$$$$$/$$$$   /$$$$$$ 
+   | $$   | $$| $$_  $$_  $$ /$$__  $$
+   | $$   | $$| $$ \ $$ \ $$| $$$$$$$$
+   | $$   | $$| $$ | $$ | $$| $$_____/
+   | $$   | $$| $$ | $$ | $$|  $$$$$$$
+   |__/   |__/|__/ |__/ |__/ \_______/
+                                      
+                                      
+                                      
+ /$$$$$$$$                    /$$     
+|__  $$__/                   | $$     
+   | $$  /$$$$$$   /$$$$$$$ /$$$$$$   
+   | $$ /$$__  $$ /$$_____/|_  $$_/   
+   | $$| $$$$$$$$|  $$$$$$   | $$     
+   | $$| $$_____/ \____  $$  | $$ /$$ 
+   | $$|  $$$$$$$ /$$$$$$$/  |  $$$$/ 
+   |__/ \_______/|_______/    \___/   
+
+
+
+                                                     
+)";
+	cout << "Welcome to Time Test, the program that will help you for using better your time!" << endl;
+	
+	
 	/*
 	 * 1. We are going to store all our tasks in a Binary Tree, 
 	 * so we have to initialize it
